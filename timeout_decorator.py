@@ -1,7 +1,13 @@
 import time
 
-import timeout_decorator
-from timeout import timeout
+try:
+    import timeout_decorator
+except ImportError:
+    raise ImportError(
+        "Requires Package timeout_decorator!\nYou can install it by pip install timeout-decorator")
+try:
+    from timeout import timeout
+except ImportError("Requires Package timeout!\nYou can install it by pip install timeout")
 
 
 def main():
