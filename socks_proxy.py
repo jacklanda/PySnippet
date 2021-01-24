@@ -2,7 +2,11 @@
 # Author: Jacklanda
 
 # pip install PySocks
-import socks
+try:
+    import socks
+except ImportError:
+    raise ImportError("Requires Package -> socks\n"
+                      "You can intall it by pip install PySocks")
 
 import socket
 
@@ -40,7 +44,11 @@ class ProxyOnSocket(object):
 if __name__ == "__main__":
 
     # pip install httpx
-    import httpx
+    try:
+        import httpx
+    except ImportError:
+        raise ImportError(
+            "Requires Package httpx\nYou can install it by pip install httpx")
 
     # simple test for httpx socks5 proxy
     url = "https://zh.wikipedia.org/wiki/Python"
