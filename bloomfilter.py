@@ -8,7 +8,7 @@ import redis
 
 class BloomFilter(object):
     """
-    An Implementation of BloomFilter base on Redis
+    An Implementation of BloomFilter based on Redis
 
     Usage:
 
@@ -25,7 +25,7 @@ class BloomFilter(object):
     - port: the Redis port, default=6379
     - db: the Redis database, default=0
     - key: the key corresponde to BloomFilter Instance, default="BloomFilter"
-    - bit_size: specify the bit size of bit array in redis, default=10,000,000 
+    - bit_size: specify the bit size of bit array in redis, default=10,000,000
     """
 
     def __init__(self,
@@ -37,7 +37,30 @@ class BloomFilter(object):
         self.r_client = redis.Redis(host=host, port=port, db=db)
         self.key = key
         self.bit_size = bit_size
-        self.seeds = [50, 51, 52, 53, 54, 55, 56]
+        # initiate a list contained 9 hash seeds
+        self.seeds = [11, 22, 33, 44, 55, 66, 77, 88, 99]
+
+    def __contains__(self, val):
+        """
+        implementation for "in" syntax 
+        to traverse some seq like list, set, tuple, etc
+
+        Usage:
+
+        ```python
+        >>> from bloomfilter import BloomFilter
+        >>> bf = BloomFilter()
+        >>> "hello kitty" in bf
+        False
+        >>> bf.add("hello kitty")
+        >>> "hello kitty" in bf
+        True
+        ```
+
+        Params:
+        - val: the input key to be judged
+        """
+        return self.is_exist(val)
 
     def _calc_offsets(self, content):
         return [mmh3.hash(content, seed) % self.bit_size for seed in self.seeds]
