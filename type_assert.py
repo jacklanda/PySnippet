@@ -1,4 +1,5 @@
 #! /bin/python3
+# -*- coding: utf-8 -*-
 # Excerpted From: Python Cookbook Chapter9: 9-7
 
 from inspect import signature
