@@ -1,3 +1,7 @@
+#!/bin/python3
+# -*- coding: utf-8 -*-
+# Author: Jacklanda
+
 import time
 
 try:
@@ -37,4 +41,5 @@ def info2():
     return
 
 
-main()
+if __name__ == "__main__":
+    main()
