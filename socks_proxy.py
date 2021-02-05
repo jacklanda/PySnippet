@@ -1,4 +1,5 @@
-#! /bin/python3.9
+#!/bin/python3
+# -*- coding: utf-8 -*-
 # Author: Jacklanda
 
 # pip install PySocks
