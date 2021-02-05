@@ -1,5 +1,5 @@
-#! /bin/python3
-# coding: utf-8
+#!/bin/python3
+# -*- coding: utf-8 -*-
 # Author: Jacklanda
 
 import mmh3
@@ -42,7 +42,7 @@ class BloomFilter(object):
 
     def __contains__(self, val):
         """
-        implementation for "in" syntax 
+        implementation for "in" syntax
         to traverse some seq like list, set, tuple, etc
 
         Usage:
